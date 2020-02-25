@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OdataToEntity.AspNetCore;
@@ -32,7 +33,7 @@ namespace ODataToEntityExampleWebApi.Controllers
         public ODataResult<Category> Get(int categoryID)
         {
             var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
-            IAsyncEnumerable<Category> categories = parser.ExecuteReader<Category>();
+            var categories = parser.ExecuteReader<Category>();
             return parser.OData(categories);
         }
 

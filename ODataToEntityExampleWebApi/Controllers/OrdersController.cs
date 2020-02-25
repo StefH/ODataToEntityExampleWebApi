@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OdataToEntity.AspNetCore;
@@ -19,10 +20,24 @@ namespace ODataToEntityExampleWebApi.Controllers
         [HttpGet]
         public ODataResult<Order> Get()
         {
-            var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
+            var modelBoundProvider = _httpContextAccessor.HttpContext.CreateModelBoundProvider();
+            var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext, modelBoundProvider);
 
             IAsyncEnumerable<Order> orders = parser.ExecuteReader<Order>();
-            
+
+            var x = parser.OData(orders);
+            return x;
+        }
+
+        [HttpGet("{OrderID}")]
+        public ODataResult<Order> Get(int OrderID)
+        {
+            var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
+
+            var ctx = parser.GetDbContext<NorthwindContext>();
+            var q = ctx.Orders.AsQueryable().Where(o => o.OrderID == OrderID);
+
+            IAsyncEnumerable<Order> orders = parser.ExecuteReader<Order>(q);
             return parser.OData(orders);
         }
     }
