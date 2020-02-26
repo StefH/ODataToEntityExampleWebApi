@@ -27,17 +27,5 @@ namespace ODataToEntityExampleWebApi.Controllers
 
             return parser.OData(orders);
         }
-
-        [HttpGet("{OrderID}")]
-        public ODataResult<Order> Get(int OrderID)
-        {
-            var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
-
-            var ctx = parser.GetDbContext<NorthwindContext>();
-            var q = ctx.Orders.AsQueryable().Where(o => o.OrderID == OrderID);
-
-            IAsyncEnumerable<Order> orders = parser.ExecuteReader<Order>(q);
-            return parser.OData(orders);
-        }
     }
 }

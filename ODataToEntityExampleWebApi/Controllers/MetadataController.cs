@@ -11,11 +11,10 @@ namespace ODataToEntityExampleWebApi.Controllers
             base.GetCsdlSchema();
         }
 
-        // TODO : not yet in NuGet ?
-        //[Route("api/$json-schema")]
-        //public void GetJson()
-        //{
-        //    base.GetJsonSchema();
-        //}
+        [Route("api/$json-schema")]
+        public void GetJson()
+        {
+            base.GetJsonSchema();
+        }
     }
 }
