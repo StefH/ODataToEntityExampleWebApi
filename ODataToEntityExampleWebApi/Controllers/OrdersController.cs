@@ -25,8 +25,7 @@ namespace ODataToEntityExampleWebApi.Controllers
 
             IAsyncEnumerable<Order> orders = parser.ExecuteReader<Order>();
 
-            var x = parser.OData(orders);
-            return x;
+            return parser.OData(orders);
         }
 
         [HttpGet("{OrderID}")]
