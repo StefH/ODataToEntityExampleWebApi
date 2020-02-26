@@ -29,12 +29,8 @@ namespace ODataToEntityExampleWebApi
         {
             var dataAdapter = new NorthwindDataAdapter(Configuration.GetConnectionString("NorthwindContext"));
             services.AddOdataToEntityMvc(dataAdapter.BuildEdmModelFromEfCoreModel());
-            //app.UseOdataToEntityMiddleware<PageMiddleware>("/api", dataAdapter.BuildEdmModelFromEfCoreModel());
 
-            // services.AddDbContext<NorthwindContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("NorthwindContext")));
             services.AddControllers();
-
-            // services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
