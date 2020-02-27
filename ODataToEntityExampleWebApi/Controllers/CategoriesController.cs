@@ -19,8 +19,6 @@ namespace ODataToEntityExampleWebApi.Controllers
         [HttpGet]
         public ODataResult<Category> Get()
         {
-            //var modelBoundProvider = _httpContextAccessor.HttpContext.CreateModelBoundProvider();
-            //var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext, modelBoundProvider);
             var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
             IAsyncEnumerable<Category> categories = parser.ExecuteReader<Category>();
 
