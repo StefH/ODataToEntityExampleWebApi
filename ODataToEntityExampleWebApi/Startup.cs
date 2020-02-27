@@ -11,18 +11,12 @@ namespace ODataToEntityExampleWebApi
 {
     public class Startup
     {
-        public Startup(IWebHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,6 +24,7 @@ namespace ODataToEntityExampleWebApi
             var dataAdapter = new NorthwindDataAdapter(Configuration.GetConnectionString("NorthwindContext"));
             services.AddOdataToEntityMvc(dataAdapter.BuildEdmModelFromEfCoreModel());
 
+            services.AddLogging();
             services.AddControllers();
         }
 

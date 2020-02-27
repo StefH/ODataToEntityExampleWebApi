@@ -35,14 +35,6 @@ namespace ODataToEntityExampleWebApi.OData
             }
         }
 
-        //public OeEfCoreSqlServerDataAdapter() : this(null, null)
-        //{
-        //}
-
-        //public OeEfCoreSqlServerDataAdapter(OeQueryCache queryCache) : this(null, queryCache)
-        //{
-        //}
-
         public OeEfCoreSqlServerDataAdapter(DbContextOptions options, OeQueryCache queryCache)
             : base(options, queryCache, new OeEfCoreSqlServerOperationAdapter(typeof(T)))
         {
