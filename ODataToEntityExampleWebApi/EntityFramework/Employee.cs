@@ -87,7 +87,7 @@ namespace ODataToEntityExampleWebApi.EntityFramework
       get;
       set;
     }
-    public string Photo
+    public byte[] Photo
     {
       get;
       set;
