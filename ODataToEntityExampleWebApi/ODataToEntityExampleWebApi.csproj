@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
     <UserSecretsId>9a794da2-6bab-49a4-9487-80d5063890e1</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <StartupObject>ODataToEntityExampleWebApi.Program</StartupObject>
