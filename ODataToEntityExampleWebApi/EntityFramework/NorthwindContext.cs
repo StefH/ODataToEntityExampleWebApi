@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace ODataToEntityExampleWebApi.EntityFramework
 {
@@ -7,10 +8,27 @@ namespace ODataToEntityExampleWebApi.EntityFramework
     /// </summary>
     public class NorthwindContext : DbContext
     {
+        //public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => {
+        //        builder
+        //            //.AddFilter("Default", LogLevel.Information)
+        //            .AddFilter("Microsoft", LogLevel.Information)
+        //            //.AddFilter("System", LogLevel.Information)
+        //            //.AddDebug()
+        //            .AddConsole();
+        //    }
+        //);
+
         public NorthwindContext(DbContextOptions<NorthwindContext> options)
             : base(options)
         {
         }
+
+        // Unhandled exception. System.InvalidOperationException: OnConfiguring cannot be used to modify DbContextOptions when DbContext pooling is enabled.
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseLoggerFactory(MyLoggerFactory); // Warning: Do not create a new ILoggerFactory instance each time
+        //    optionsBuilder.EnableSensitiveDataLogging();
+        //}
 
         void OnModelBuilding(ModelBuilder builder)
         {
