@@ -8,14 +8,15 @@ namespace ODataToEntityExampleWebApi.EntityFramework
     /// </summary>
     public class NorthwindContext : DbContext
     {
-        //public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => {
-        //        builder
-        //            //.AddFilter("Default", LogLevel.Information)
-        //            .AddFilter("Microsoft", LogLevel.Information)
-        //            //.AddFilter("System", LogLevel.Information)
-        //            //.AddDebug()
-        //            .AddConsole();
-        //    }
+        //public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder =>
+        //{
+        //    builder
+        //        //.AddFilter("Default", LogLevel.Information)
+        //        .AddFilter("Microsoft", LogLevel.Debug)
+        //        //.AddFilter("System", LogLevel.Information)
+        //        //.AddDebug()
+        //        .AddConsole();
+        //}
         //);
 
         public NorthwindContext(DbContextOptions<NorthwindContext> options)

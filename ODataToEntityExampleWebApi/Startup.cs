@@ -27,9 +27,9 @@ namespace ODataToEntityExampleWebApi
             var dbLoggerFactory = LoggerFactory.Create(builder =>
             {
                 builder
-                    .AddFilter("Default", LogLevel.Debug)
-                    .AddFilter("Microsoft", LogLevel.Information)
-                    //.AddFilter("System", LogLevel.Information)
+                    .AddFilter("Default", LogLevel.Trace)
+                    .AddFilter("Microsoft", LogLevel.Trace)
+                    .AddFilter("System", LogLevel.Trace)
                     .AddDebug()
                     .AddConsole();
             });
