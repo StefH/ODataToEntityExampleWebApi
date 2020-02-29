@@ -44,18 +44,16 @@ namespace ODataToEntityExampleWebApi
             optionsBuilder.EnableDetailedErrors();
 
             var dataAdapter = new NorthwindDataAdapter(optionsBuilder.Options, true);
-            //services.AddOdataToEntityMvc(dataAdapter.BuildEdmModelFromEfCoreModel());
+            services.AddOdataToEntityMvc(dataAdapter.BuildEdmModelFromEfCoreModel());
 
-            services.AddHttpContextAccessor();
-            services.AddSingleton<IEdmModel>(dataAdapter.BuildEdmModelFromEfCoreModel());
-            services.AddMvcCore(o =>
-            {
-                // o.Conventions.Add(new CustomControllerModelConvention());
-                o.Conventions.Add(new OeControllerConvention());
-                o.Conventions.Add(new OeBatchFilterConvention());
-            });
-
-            //services.AddMvc(o => o.FormatterMappings.SetMediaTypeMappingForFormat("", new MediaTypeHeaderValue()));
+            //services.AddHttpContextAccessor();
+            //services.AddSingleton<IEdmModel>(dataAdapter.BuildEdmModelFromEfCoreModel());
+            //services.AddMvcCore(o =>
+            //{
+            //    // o.Conventions.Add(new CustomControllerModelConvention());
+            //    o.Conventions.Add(new OeControllerConvention());
+            //    o.Conventions.Add(new OeBatchFilterConvention());
+            //});
 
             services.AddLogging();
             services.AddControllers();

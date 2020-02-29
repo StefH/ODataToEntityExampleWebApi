@@ -28,18 +28,18 @@ namespace ODataToEntityExampleWebApi.Controllers
             return parser.ExecuteReader<Employee>();
         }
 
-        [Produces("application/json")]
-        [HttpGet("<ids>")]
-        public async Task<ODataResult<Employee>> Get(string ids)
-        {
-            var employeeIds = ids.Split(',').Select(int.Parse);
-            var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
+        //// Force application/json : https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/formatting?view=aspnetcore-3.1#specify-a-format
+        //[Produces("application/json")]
+        //[HttpGet]
+        //public async Task<ODataResult<Employee>> Get([FromQuery(Name = "ids")] int[] ids = null)
+        //{
+        //    var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
 
-            var ctx = parser.GetDbContext<NorthwindContext>();
-            //var employees = parser.ExecuteReader<Employee>(ctx.Employees.AsQueryable().Where(o => o.EmployeeID > 0 && o.EmployeeID == id));
-            var employees = parser.ExecuteReader<Employee>();
-            var orderList = await employees.Where(o => o.EmployeeID > 0 && employeeIds.Contains(o.EmployeeID)).OrderBy(o => o.EmployeeID).ToListAsync().ConfigureAwait(false);
-            return parser.OData(orderList);
-        }
+        //    var ctx = parser.GetDbContext<NorthwindContext>();
+        //    var employees = parser.ExecuteReader<Employee>(ctx.Employees.AsQueryable().Where(o => o.EmployeeID > 0);
+        //    //var employees = parser.ExecuteReader<Employee>();
+        //    var employeeList = await employees.Where(o => o.EmployeeID > 0 && (ids?.Contains(o.EmployeeID) ?? true)).OrderBy(o => o.EmployeeID).ToListAsync().ConfigureAwait(false);
+        //    return parser.OData(employeeList);
+        //}
     }
 }
