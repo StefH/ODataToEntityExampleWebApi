@@ -8,13 +8,13 @@ namespace ODataToEntityExampleWebApi.Controllers
         [Route("$metadata")]
         public void GetCsdl()
         {
-            base.GetCsdlSchema();
+            GetCsdlSchema();
         }
 
         [Route("api/$json-schema")]
         public void GetJson()
         {
-            base.GetJsonSchema();
+            GetJsonSchema();
         }
     }
 }

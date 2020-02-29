@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ODataToEntityExampleWebApi", "ODataToEntityExampleWebApi\ODataToEntityExampleWebApi.csproj", "{8053CF45-E49C-4E38-8CEF-F229BCDFA461}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OdataToEntity", "..\_clone\OdataToEntity\source\OdataToEntity\OdataToEntity.csproj", "{2720BDBC-0C59-4CD3-B44F-78EC097CE60D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OdataToEntity.EfCore", "..\_clone\OdataToEntity\source\OdataToEntity.EfCore\OdataToEntity.EfCore.csproj", "{8FB29F24-3E68-4268-856C-E447C8FECF01}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OdataToEntity.AspNetCore", "..\_clone\OdataToEntity\source\OdataToEntity.AspNetCore\OdataToEntity.AspNetCore.csproj", "{120B25CE-84AD-4F0E-8143-FB3AD6D4DEB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{8053CF45-E49C-4E38-8CEF-F229BCDFA461}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8053CF45-E49C-4E38-8CEF-F229BCDFA461}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8053CF45-E49C-4E38-8CEF-F229BCDFA461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2720BDBC-0C59-4CD3-B44F-78EC097CE60D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2720BDBC-0C59-4CD3-B44F-78EC097CE60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2720BDBC-0C59-4CD3-B44F-78EC097CE60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2720BDBC-0C59-4CD3-B44F-78EC097CE60D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB29F24-3E68-4268-856C-E447C8FECF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB29F24-3E68-4268-856C-E447C8FECF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB29F24-3E68-4268-856C-E447C8FECF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB29F24-3E68-4268-856C-E447C8FECF01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120B25CE-84AD-4F0E-8143-FB3AD6D4DEB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120B25CE-84AD-4F0E-8143-FB3AD6D4DEB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120B25CE-84AD-4F0E-8143-FB3AD6D4DEB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120B25CE-84AD-4F0E-8143-FB3AD6D4DEB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

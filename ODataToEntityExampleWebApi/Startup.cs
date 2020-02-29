@@ -5,8 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
+using Microsoft.OData.Edm;
 using OdataToEntity.AspNetCore;
 using OdataToEntity.EfCore;
+using ODataToEntityExampleWebApi.Conventions;
 using ODataToEntityExampleWebApi.EntityFramework;
 using ODataToEntityExampleWebApi.OData;
 
@@ -27,9 +30,9 @@ namespace ODataToEntityExampleWebApi
             var dbLoggerFactory = LoggerFactory.Create(builder =>
             {
                 builder
-                    .AddFilter("Default", LogLevel.Trace)
-                    .AddFilter("Microsoft", LogLevel.Trace)
-                    .AddFilter("System", LogLevel.Trace)
+                    //.AddFilter("Default", LogLevel.Trace)
+                    //.AddFilter("Microsoft", LogLevel.Trace)
+                    //.AddFilter("System", LogLevel.Trace)
                     .AddDebug()
                     .AddConsole();
             });
@@ -41,7 +44,18 @@ namespace ODataToEntityExampleWebApi
             optionsBuilder.EnableDetailedErrors();
 
             var dataAdapter = new NorthwindDataAdapter(optionsBuilder.Options, true);
-            services.AddOdataToEntityMvc(dataAdapter.BuildEdmModelFromEfCoreModel());
+            //services.AddOdataToEntityMvc(dataAdapter.BuildEdmModelFromEfCoreModel());
+
+            services.AddHttpContextAccessor();
+            services.AddSingleton<IEdmModel>(dataAdapter.BuildEdmModelFromEfCoreModel());
+            services.AddMvcCore(o =>
+            {
+                // o.Conventions.Add(new CustomControllerModelConvention());
+                o.Conventions.Add(new OeControllerConvention());
+                o.Conventions.Add(new OeBatchFilterConvention());
+            });
+
+            //services.AddMvc(o => o.FormatterMappings.SetMediaTypeMappingForFormat("", new MediaTypeHeaderValue()));
 
             services.AddLogging();
             services.AddControllers();

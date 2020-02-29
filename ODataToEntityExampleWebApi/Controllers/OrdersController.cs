@@ -24,9 +24,7 @@ namespace ODataToEntityExampleWebApi.Controllers
         {
             _logger.LogInformation("Getting orders...");
 
-            var modelBoundProvider = _httpContextAccessor.HttpContext.CreateModelBoundProvider();
-            var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext, modelBoundProvider);
-
+            var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
             IAsyncEnumerable<Order> orders = parser.ExecuteReader<Order>();
 
             return parser.OData(orders);

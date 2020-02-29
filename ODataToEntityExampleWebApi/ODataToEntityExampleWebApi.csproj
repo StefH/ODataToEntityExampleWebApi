@@ -15,7 +15,13 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.2" />
 
     <PackageReference Include="OdataToEntity.AspNetCore" Version="2.5.0" />
-    <PackageReference Include="OdataToEntity.EfCore" Version="2.5.0" />
+    <PackageReference Include="OdataToEntity.EfCore" Version="2.5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--<ProjectReference Include="..\..\_clone\OdataToEntity\source\OdataToEntity.AspNetCore\OdataToEntity.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\_clone\OdataToEntity\source\OdataToEntity.EfCore\OdataToEntity.EfCore.csproj" />
+    <ProjectReference Include="..\..\_clone\OdataToEntity\source\OdataToEntity\OdataToEntity.csproj" />-->
   </ItemGroup>
 
 </Project>
