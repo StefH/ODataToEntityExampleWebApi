@@ -27,15 +27,10 @@ namespace ODataToEntityExampleWebApi.Controllers
             var parser = new OeAspQueryParser(_httpContextAccessor.HttpContext);
 
             var ctx = parser.GetDbContext<NorthwindContext>();
-            var l2 = new[] {1, 2};
-            var e2 = ctx.Employees.AsQueryable().Where(e => l2.Contains(e.EmployeeID)).ToList();
+            var list = Enumerable.Range(1, 10).Union(Enumerable.Range(10000, 30000));
+            var employees1 = ctx.Employees.AsQueryable().Where(e => list.Contains(e.EmployeeID)).ToList();
 
-            //var ems = ctx.Employees.FromSqlInterpolated($"SELECT * FROM [dbo].[Employees] WHERE ARRAY({userSuppliedSearchTerm})");
-
-            var q = from e in ctx.Employees.AsQueryable()
-                join x in l2 on e.EmployeeID equals x
-                select e;
-            var result = q.ToList();
+            var employees2 = ctx.Employees.AsQueryable().Where(e => list.Contains(e.EmployeeID)).ToList();
 
             return parser.ExecuteReader<Employee>();
         }

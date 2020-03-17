@@ -39,7 +39,12 @@ namespace ODataToEntityExampleWebApi
 
             var optionsBuilder = new DbContextOptionsBuilder<NorthwindContext>();
             optionsBuilder.UseLoggerFactory(dbLoggerFactory); // Warning: Do not create a new ILoggerFactory instance each time
-            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("NorthwindContext"), opt => opt.UseRelationalNulls());
+            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("NorthwindContext"), opt =>
+                {
+                    opt.UseRelationalNulls();
+                    opt.CommandTimeout(5 * 60);
+                }
+            );
             optionsBuilder.EnableSensitiveDataLogging();
             optionsBuilder.EnableDetailedErrors();
 
